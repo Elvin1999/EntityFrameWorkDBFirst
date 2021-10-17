@@ -1,6 +1,7 @@
 ﻿using EntityFramework.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -80,7 +81,8 @@ namespace EntityFramework
                     .Books
                     .Include("Author")//Eager loading , it comes navigation properties
                     .Include("Category").ToList();
-                mydatagrid.ItemsSource = books;
+                var list = new ObservableCollection<Book>(books);
+                mydatagrid.ItemsSource = list;
 
 
             }
